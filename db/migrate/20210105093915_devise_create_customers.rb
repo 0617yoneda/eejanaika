@@ -36,7 +36,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :profile_image_id
       t.string :crazy
       t.string :word
-      t.string :is_deleted, null: false, default: false
+      t.boolean :is_deleted, null: false, default: false
       t.timestamps null: false
 
       t.timestamps null: false
