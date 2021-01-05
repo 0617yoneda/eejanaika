@@ -10,3 +10,14 @@ Admin.create!(
   email: "pa0617yoneda@gmail.com",
   password: "adminadmin"
 )
+
+Category.create!(
+  [
+    {
+      name: "趣味",
+    },
+    {
+      name: "特技",
+    }
+  ]
+)
