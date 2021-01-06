@@ -17,7 +17,7 @@
           <% else %>
             <li><%= link_to "新規登録(30秒で終わります！)",  new_customer_registration_path %></li>
             <li><%= link_to "ログイン", new_customer_session_path %></li>
-            <li><%= link_to "ゲストユーザー(チラ見しちゃいましょう！)", new_customer_session_path %></li>
+            <li><%= link_to "ゲストユーザー(チラ見しちゃいましょう！)", customers_guest_sign_in_path, method: :post %></li>
           <% end %>
         </ul>
       </div>

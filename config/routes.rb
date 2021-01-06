@@ -26,4 +26,8 @@ Rails.application.routes.draw do
   get "categories/:id/posts" => "categories#index", as: "category_posts"
   resources :notifications, only: [:index, :destroy]
   get "searches" => "searches#search", as: "searches"
+
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#new_guest'
+  end
 end
