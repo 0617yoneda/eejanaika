@@ -1,2 +1,35 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>投稿一覧</h1>
+
+<p>『夢中』に関する投稿が全<%= @posts.count %>件あります！</p>
+
+<!--bootstrapでカード化-->
+<% @posts.each do |post| %>
+  <div>
+    <div>
+      <%= post.category.name  %>
+    </div>
+    <div>
+      <%= link_to post_path(post) do %>
+        <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %><br>
+      <% end %>
+    </div>
+    <div>
+      タイトル  <%= post.title %><br>
+    </div>
+    <div>
+      コメント  <%= post.body %><br>
+    <div>
+    <div>
+      <%= attachment_image_tag post.customer, :profile_image_id, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
+    </div>
+    <div>
+      ユーザー名  <%= post.customer.nickname %>
+    </div>
+    <div>
+      コメント数〇件
+    </div>
+    <div>
+      いいね数〇件
+    </div>
+  </div>
+<% end %>
