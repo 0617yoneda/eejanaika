@@ -14,16 +14,13 @@
       <% end %>
     </div>
     <div>
-      タイトル  <%= post.title %><br>
+      <%= post.title %><br>
     </div>
-    <div>
-      コメント  <%= post.body %><br>
-    <div>
     <div>
       <%= attachment_image_tag post.customer, :profile_image_id, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
     </div>
     <div>
-      ユーザー名  <%= post.customer.nickname %>
+      <%= post.customer.nickname %>
     </div>
     <div>
       コメント数〇件
