@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
     favorite.customer_id = current_customer.id
     favorite.post_id = post.id
     favorite.save
+    post.create_notification_favorite(current_customer)
     redirect_to post_path(post)
   end
 

@@ -1,0 +1,27 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div>
+  <%= link_to customer_path(visitor) do %>
+    <%= attachment_image_tag visitor, :profile_image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg" %>
+    <%= visitor.nickname %>さんが
+  <% end %>
+
+  <% case notification.action %>
+  <% when 'favorite' then %>
+    <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>"にいいねしました"
+  <% when 'post_comment' then %>
+    <% if notification.post.customer_id == visited.id %>
+      <%= link_to "あなたの投稿に", notification.post, style: "font-weight: bold;" %>
+      コメントしました
+    <% else %>
+      <%= link_to post_path(notification.post) do %>
+        <%= attachment_image_tag notification.post.customer, :profile_image, :fill, 70, 70, format: "jpg", fallback: "no_image.jpg", class: "icon_mini" %>
+        <strong><%= notification.post.customer.name + 'さんの投稿' %>にコメントしました</strong>
+      <% end %>
+    <% end %>
+    <p class="notification-text">
+      <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
+    </p>
+  <% end %>
+</div>

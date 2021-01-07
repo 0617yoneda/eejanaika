@@ -5,6 +5,7 @@ class PostCommentsController < ApplicationController
     post_comment.customer_id = current_customer.id
     post_comment.post_id = post.id
     post_comment.save
+    post.create_notification_post_comment!(current_customer, post_comment.id)
     redirect_to post_path(post)
   end
 
