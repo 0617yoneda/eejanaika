@@ -23,10 +23,7 @@
       <%= post.customer.nickname %>
     </div>
     <div>
-      コメント<%= post.post_comments.count %>件
-    </div>
-    <div>
-      いいね数〇件
+      コメント<%= post.post_comments.count %>件 | GOOD♥<%= post.favorites.count %>件
     </div>
   </div>
 <% end %>

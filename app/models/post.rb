@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
   attachment :image
+
+  def favorited_by?(customer)
+    favorites.where(customer_id: customer.id).exists?
+  end
 end
