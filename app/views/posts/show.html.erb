@@ -15,7 +15,7 @@
     <%= @post.body %><br>
   <div>
   <div>
-    いいね数〇件　コメント数〇件
+    いいね数〇件　コメント<%= @post.post_comments.count %>件
   </div>
   <div>
     <% if @post.customer == current_customer %>
@@ -23,9 +23,25 @@
       <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
     <% end %>
   </div>
-  <p>コメント記入欄</p>
-  <p>コメント送信ボタン</p>
-  <p>各コメント欄</p>
-  <p>コメントに削除ボタン</p>
+  <div>
+    <%= form_with model:[@post,@post_comment], local: true do |f| %>
+      <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
+      <%= f.submit "コメント送信" %>
+    <% end %>
+  </div>
+  <% @post.post_comments.each do |post_comment| %>
+    <div>
+      <%= link_to customer_path(post_comment) do %>
+        <%= attachment_image_tag post_comment.customer, :profile_image_id, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= post_comment.customer.nickname %>
+      <% end %>
+      <%= post_comment.comment %>
+    </div>
+    <div>
+      <% if post_comment.customer == current_customer %>
+        <%= link_to "削除", post_post_comment_path(post_comment), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
