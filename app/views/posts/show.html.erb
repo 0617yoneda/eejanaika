@@ -10,12 +10,20 @@
       <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg' %><br>
     <% end %>
   </div>
-
   <div>
     <%= @post.body %><br>
   <div>
   <div>
-    いいね数〇件 コメント<%= @post.post_comments.count %>件
+    コメント<%= @post.post_comments.count %> |
+    <% if @post.favorited_by?(current_customer) %>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        GOOD♥<%= @post.favorites.count %>
+      <% end %>
+    <% else %>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        GOOD♡<%= @post.favorites.count %>
+      <% end %>
+    <% end %>
   </div>
   <div>
     <% if @post.customer == current_customer %>
