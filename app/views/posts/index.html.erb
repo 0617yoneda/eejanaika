@@ -1,5 +1,14 @@
-<h1>投稿一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "layouts/profile", customer: @customer %>
+    </div>
+    <div class="offset-md-1 col-md-8">
+      <h1>投稿一覧</h1>
+      <h6>『夢中』に関する投稿が全<%= @posts.count %>件あります！</h6>
+      <%= render "posts/index", posts: @posts %>
+    </div>
+  </div>
+</div>
 
-<p>『夢中』に関する投稿が全<%= @posts.count %>件あります！</p>
 
-<%= render "posts/index", posts: @posts %>

@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @customer = current_customer
   end
 
   def show
