@@ -11,8 +11,9 @@
     <% end %>
   </div>
   <div>
-    <%= @post.body %><br>
-  <div>
+    <%= @post.body %>
+  </div>
+<!--コメントエリア-->
   <div>
     コメント<%= @post.post_comments.count %> |
     <% if @post.favorited_by?(current_customer) %>
