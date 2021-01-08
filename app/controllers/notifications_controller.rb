@@ -7,5 +7,7 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
+    @notifications = current_customer.passive_notifications.destroy_all
+    redirect_to posts_path
   end
 end

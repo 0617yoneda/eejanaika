@@ -19,9 +19,13 @@
         <%= attachment_image_tag notification.post.customer, :profile_image, :fill, 70, 70, format: "jpg", fallback: "no_image.jpg", class: "icon_mini" %>
         <strong><%= notification.post.customer.name + 'さんの投稿' %>にコメントしました</strong>
       <% end %>
+
     <% end %>
     <p class="notification-text">
-      <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
+      <%= notification.post_comment.comment %>
+    </p>
+    <p>
+      <%= time_ago_in_words(notification.created_at).downcase %>
     </p>
   <% end %>
 </div>
