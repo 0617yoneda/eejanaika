@@ -13,7 +13,7 @@
       <%= post.title %><br>
     </div>
     <div>
-      <%= attachment_image_tag post.customer, :profile_image_id, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
+      <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
     </div>
     <div>
       <%= post.customer.nickname %>
