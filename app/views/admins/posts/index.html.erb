@@ -18,7 +18,7 @@
             <td><%= post.id %></td>
             <td><%= post.customer.nickname %></td>
             <td>
-              <%= link_to  edit_post_path(post) do %>
+              <%= link_to  admins_post_path(post) do %>
                 <%= post.title %>
               <% end %>
               </td>

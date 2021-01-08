@@ -1,0 +1,44 @@
+<h1>投稿詳細</h1>
+
+<div>
+  <div>
+    <%= "投稿id" %>
+    <%= @post.id  %>
+  </div>
+  <div>
+    <%= "ユーザー名" %>
+    <%= @post.customer.nickname  %>
+  </div>
+  <div>
+    <%= "ジャンル" %>
+    <%= @post.category.name  %>
+  </div>
+  <div>
+    <%= "タイトル" %>
+    <%= @post.title %>
+  </div>
+  <div>
+    <%= "コメント" %>
+    <%= @post.body %>
+  </div>
+  <div>
+    <%= "イメージ画像" %>
+    <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg' %><br>
+  </div>
+
+  <div>
+    <%= link_to "投稿削除", admins_post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+  </div>
+
+<!--コメントエリア-->
+  <% @post_comment.each do |post_comment| %>
+    <div>
+      <%= post_comment.customer.nickname %>
+      <%= post_comment.comment %>
+    </div>
+    <div>
+        <%= link_to "削除", admins_post_comment_path(@post, post_comment), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+    </div>
+  <% end %>
+</div>
+
