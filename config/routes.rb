@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    get :search, on: :collection
   end
   get "categories/:id/posts" => "categories#index", as: "category_posts"
   resources :notifications, only: [:index, :destroy]
-  get "searches" => "searches#search", as: "searches"
 
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#new_guest'

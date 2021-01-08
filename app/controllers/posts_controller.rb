@@ -12,6 +12,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @search = Post.ransack(params[:q])
+    @post_searches = @search.result
   end
 
   def show
@@ -31,6 +33,10 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to posts_path
   end
+
+  def search
+  end
+
 end
 
 private

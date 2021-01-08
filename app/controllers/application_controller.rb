@@ -27,4 +27,5 @@ class ApplicationController < ActionController::Base
       :word
     ])
   end
+
 end
