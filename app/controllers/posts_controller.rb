@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :set_q, only: [:index, :search]
+
   def new
     @post = Post.new
   end
