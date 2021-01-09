@@ -1,0 +1,36 @@
+<h1>ユーザー一覧</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>会員id</th>
+            <th>ユーザー名</th>
+            <th>会員ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td>
+              <%= link_to  edit_admins_customer_path(customer) do %>
+                <%= customer.nickname %>
+              <% end %>
+            </td>
+            <td>
+              <% if customer.is_deleted == true %>
+                <%= "退会済み" %>
+              <% else %>
+                <%= "有効" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
