@@ -24,8 +24,7 @@ class ApplicationController < ActionController::Base
       :nickname,
       :profile_image_id,
       :crazy,
-      :word
+      :word,
     ])
   end
-
 end

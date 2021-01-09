@@ -5,6 +5,7 @@
         <%= "ユーザーid" %>
         <%= @customer.id %>
       </div>
+    <!--名前空間の為model注意-->
     <%= form_with model:[:admins, @customer], local:true do |f| %>
       <div class="form-group">
         <%= "ユーザー名" %>

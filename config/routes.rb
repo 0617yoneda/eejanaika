@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
-    registrations: 'admins/customers'
   }
-  
-
 
   namespace :admins do
     resources :customers, only: [:index, :edit, :update]
@@ -13,9 +10,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :customers, controllers: {
-    sessions:      'customers/sessions',
-    passwords:     'customers/passwords',
-    registrations: 'customers/registrations'
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations',
   }
 
   root "homes#top"

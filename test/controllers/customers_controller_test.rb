@@ -25,5 +25,4 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     get customers_hide_url
     assert_response :success
   end
-
 end
