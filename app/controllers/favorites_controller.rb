@@ -1,13 +1,17 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_customer!
   def create
-    post = Post.find(params[:post_id])
-    favorite = Favorite.new
-    favorite.customer_id = current_customer.id
-    favorite.post_id = post.id
-    favorite.save
-    post.create_notification_favorite(current_customer)
-    redirect_to post_path(post)
+    if current_customer.email != "guest@example.com"
+      post = Post.find(params[:post_id])
+      favorite = Favorite.new
+      favorite.customer_id = current_customer.id
+      favorite.post_id = post.id
+      favorite.save
+      post.create_notification_favorite(current_customer)
+      redirect_to post_path(post)
+    else
+      redirect_to request.referer
+    end
   end
 
   def destroy

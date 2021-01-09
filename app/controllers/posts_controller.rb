@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_customer!
   before_action :set_q, only: [:index, :search]
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_guest, only: [:new]
 
   def new
     @post = Post.new
@@ -61,6 +62,13 @@ end
 def ensure_correct_customer
   @post = Post.find(params[:id])
   unless @post.customer == current_customer
+     redirect_to posts_path
+  end
+end
+
+def ensure_correct_guest
+  @customer = current_customer
+  if @customer.email == 'guest@example.com'
      redirect_to posts_path
   end
 end

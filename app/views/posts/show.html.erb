@@ -40,9 +40,11 @@
           <% end %>
         </div>
         <div>
-          <%= form_with model:[@post,@post_comment], local: true do |f| %>
-            <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
-            <%= f.submit "コメント送信" %>
+          <% if current_customer.email != "guest@example.com"  %>
+            <%= form_with model:[@post,@post_comment], local: true do |f| %>
+              <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
+              <%= f.submit "コメント送信" %>
+            <% end %>
           <% end %>
         </div>
         <% @post.post_comments.each do |post_comment| %>
