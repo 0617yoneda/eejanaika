@@ -41,15 +41,14 @@ class PostsController < ApplicationController
   def search
     @post_searches = @q.result
   end
-
 end
 
 private
 
-  def set_q
-    @q = Post.ransack(params[:q])
-  end
+def set_q
+  @q = Post.ransack(params[:q])
+end
 
-  def post_params
-    params.require(:post).permit(:category_id, :title, :body, :try, :image)
-  end
+def post_params
+  params.require(:post).permit(:category_id, :title, :body, :try, :image)
+end

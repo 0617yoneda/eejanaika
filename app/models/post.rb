@@ -28,7 +28,6 @@ class Post < ApplicationRecord
 
   # コメント通知作成
   def create_notification_post_comment!(current_customer, post_comment_id)
-
     temp_ids = PostComment.select(:customer_id).where(post_id: id).where.not(customer_id: current_customer.id).distinct
     temp_ids.each do |temp_id|
       save_notification_post_comment!(current_customer, post_comment_id, temp_id['customer_id'])
@@ -36,8 +35,8 @@ class Post < ApplicationRecord
 
     save_notification_post_comment!(current_customer, post_comment_id, customer_id) if temp_ids.blank?
   end
-  def save_notification_post_comment!(current_customer, post_comment_id, visited_id)
 
+  def save_notification_post_comment!(current_customer, post_comment_id, visited_id)
     notification = current_customer.active_notifications.new(
       post_id: id,
       post_comment_id: post_comment_id,
@@ -50,5 +49,4 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
 end

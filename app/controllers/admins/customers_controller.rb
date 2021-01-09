@@ -18,5 +18,4 @@ class Admins::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:nickname, :profile_image, :crazy, :word)
   end
-
 end
