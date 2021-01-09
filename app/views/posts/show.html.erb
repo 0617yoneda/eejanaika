@@ -1,56 +1,65 @@
-<h1><%= @post.title %></h1>
+<div class="container">
+  <div class="row">
 
+    <div class="col-md-3">
+      <%= render "layouts/profile", customer: @customer %>
+    </div>
+
+    <div class="offset-md-1 col-md-8">
 <!--bootstrapでカード化-->
-<div>
-  <div>
-    <%= @post.category.name  %>
-  </div>
-  <div>
-    <%= link_to posts_path(@post) do %>
-      <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg' %><br>
-    <% end %>
-  </div>
-  <div>
-    <%= @post.body %>
-  </div>
-<!--コメントエリア-->
-  <div>
-    コメント<%= @post.post_comments.count %> |
-    <% if @post.favorited_by?(current_customer) %>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        GOOD♥<%= @post.favorites.count %>
-      <% end %>
-    <% else %>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        GOOD♡<%= @post.favorites.count %>
-      <% end %>
-    <% end %>
-  </div>
-  <div>
-    <% if @post.customer == current_customer %>
-      <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success" %>
-      <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
-    <% end %>
-  </div>
-  <div>
-    <%= form_with model:[@post,@post_comment], local: true do |f| %>
-      <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
-      <%= f.submit "コメント送信" %>
-    <% end %>
-  </div>
-  <% @post.post_comments.each do |post_comment| %>
-    <div>
-      <%= link_to customer_path(post_comment.customer) do %>
-        <%= attachment_image_tag post_comment.customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-        <%= post_comment.customer.nickname %>
-      <% end %>
-      <%= post_comment.comment %>
+      <div>
+        <h1><%= @post.title %></h1>
+        <div>
+          <%= @post.category.name  %>
+        </div>
+        <div>
+          <%= link_to posts_path(@post) do %>
+            <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg' %><br>
+          <% end %>
+        </div>
+        <div>
+          <%= @post.body %>
+        </div>
+      <!--コメントエリア-->
+        <div>
+          コメント<%= @post.post_comments.count %> |
+          <% if @post.favorited_by?(current_customer) %>
+            <%= link_to post_favorites_path(@post), method: :delete do %>
+              GOOD♥<%= @post.favorites.count %>
+            <% end %>
+          <% else %>
+            <%= link_to post_favorites_path(@post), method: :post do %>
+              GOOD♡<%= @post.favorites.count %>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <% if @post.customer == current_customer %>
+            <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success" %>
+            <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model:[@post,@post_comment], local: true do |f| %>
+            <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
+            <%= f.submit "コメント送信" %>
+          <% end %>
+        </div>
+        <% @post.post_comments.each do |post_comment| %>
+          <div>
+            <%= link_to customer_path(post_comment.customer) do %>
+              <%= attachment_image_tag post_comment.customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+              <%= post_comment.customer.nickname %>
+            <% end %>
+            <%= post_comment.comment %>
+          </div>
+          <div>
+            <% if post_comment.customer == current_customer %>
+              <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div>
-      <% if post_comment.customer == current_customer %>
-        <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
 </div>
-

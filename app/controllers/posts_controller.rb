@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = PostComment.all
+    @customer = @post.customer
   end
 
   def edit
@@ -42,6 +43,7 @@ class PostsController < ApplicationController
   end
 
   def search
+    @customer = current_customer
     @post_searches = @q.result
   end
 end
