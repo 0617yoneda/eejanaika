@@ -1,5 +1,4 @@
 <h1><%= @customer.nickname %>さんの『夢中』一覧</h1>
-全<%= @posts.count %>件
+全<%= @posts.total_count %>件
 
 <%= render "posts/index", posts: @posts %>
-
