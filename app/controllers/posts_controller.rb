@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :set_q, only: [:index, :search]
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_guest, only: [:new]
+
   def new
     @post = Post.new
   end
@@ -20,6 +24,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = PostComment.all
+    @customer = @post.customer
   end
 
   def edit
@@ -33,12 +38,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    @post = Post.find(params[:id])
+    @post.destroy
     redirect_to posts_path
   end
 
   def search
+    @customer = current_customer
     @post_searches = @q.result
   end
 end
@@ -51,4 +57,18 @@ end
 
 def post_params
   params.require(:post).permit(:category_id, :title, :body, :try, :image)
+end
+
+def ensure_correct_customer
+  @post = Post.find(params[:id])
+  unless @post.customer == current_customer
+     redirect_to posts_path
+  end
+end
+
+def ensure_correct_guest
+  @customer = current_customer
+  if @customer.email == 'guest@example.com'
+     redirect_to posts_path
+  end
 end

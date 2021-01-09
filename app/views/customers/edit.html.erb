@@ -23,9 +23,11 @@
       <div class="form-group">
         <%= f.submit "変更確定！", class: 'btn btn-danger' %>
       </div>
-    <% end %>
+    <% end %></br>
     <div>
-      <%=link_to "退会する", customer_out_path(@customer.id), class:"btn btn-danger" %>
+      <% if @customer.email != "guest@example.com" %>
+        <%=link_to "退会する", customer_out_path(@customer.id), class:"btn btn-danger" %>
+      <% end %>
     </div>
   </div>
 </div>
