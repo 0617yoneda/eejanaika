@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
- 
+
     <%= form_with model: @customer, local:true do |f| %>
       <div class="form-group">
         <%= f.label "ニックネーム" %>
@@ -24,5 +24,8 @@
         <%= f.submit "変更確定！", class: 'btn btn-danger' %>
       </div>
     <% end %>
+    <div>
+      <%=link_to "退会する", customer_out_path(@customer.id), class:"btn btn-danger" %>
+    </div>
   </div>
 </div>

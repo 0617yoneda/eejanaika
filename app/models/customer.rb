@@ -12,6 +12,10 @@ class Customer < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  def active_for_authentication?
+        super && (self.is_deleted == false)
+  end
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.nickname = "ゲストユーザー"
