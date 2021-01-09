@@ -1,2 +1,27 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<h1>Myプロフィール編集</h1>
+
+<div class="container">
+  <div class="row">
+    <%= form_with model: @customer, local:true do |f| %>
+      <div class="form-group">
+        <%= f.label "ニックネーム" %>
+        <%= f.text_field :nickname, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "プロフィール画像" %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+      <div class="form-group">
+        <%= f.label "最近、夢中になっている事！" %>
+        <%= f.text_field :crazy, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "好きな言葉！" %>
+        <%= f.text_field :word, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "変更確定！", class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </div>
+</div>

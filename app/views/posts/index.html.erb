@@ -4,28 +4,17 @@
 
 <p>『夢中』に関する投稿が全<%= @posts.count %>件あります！</p>
 
-<!--bootstrapでカード化-->
-<% @posts.each do |post| %>
-  <div>
-    <div>
-      <%= post.category.name  %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "layouts/profile", customer: @customer %>
     </div>
-    <div>
-      <%= link_to post_path(post) do %>
-        <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %><br>
-      <% end %>
-    </div>
-    <div>
-      <%= post.title %><br>
-    </div>
-    <div>
-      <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
-    </div>
-    <div>
-      <%= post.customer.nickname %>
-    </div>
-    <div>
-      コメント<%= post.post_comments.count %> | GOOD♥<%= post.favorites.count %>
+    <div class="offset-md-1 col-md-8">
+      <h1>投稿一覧</h1>
+      <h6>『夢中』に関する投稿が全<%= @posts.count %>件あります！</h6>
+      <%= render "posts/index", posts: @posts %>
     </div>
   </div>
-<% end %>
+</div>
+
+

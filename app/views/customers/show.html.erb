@@ -1,2 +1,5 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<h1><%= @customer.nickname %>さんの『夢中』一覧</h1>
+全<%= @posts.count %>件
+
+<%= render "posts/index", posts: @posts %>
+
