@@ -13,7 +13,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @search = Post.ransack(params[:q])
     @customer = current_customer
   end
 

@@ -1,4 +1,5 @@
-<h1>夢中一覧</h1>
+<h1>検索結果　全<%= @post_searches.count %>件あります！</h1>
+
 
 <!--bootstrapでカード化-->
 <% @post_searches.each do |post| %>
@@ -15,7 +16,7 @@
       <%= post.title %><br>
     </div>
     <div>
-      
+
     </div>
     <div>
       <%= post.customer.nickname %>
