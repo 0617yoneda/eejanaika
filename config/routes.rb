@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :customers, only: [:index, :edit, :update]
-    resources :posts, only: [:index, :show, :destroy]
-    resources :post_comments, only: [:destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
   end
 
   devise_for :customers, controllers: {
