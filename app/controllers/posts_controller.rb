@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
   def new
     @post = Post.new
   end
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @search = Post.ransack(params[:q])
     @customer = current_customer
   end
 
@@ -36,9 +38,18 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to posts_path
   end
+
+  def search
+    @post_searches = @q.result
+  end
+
 end
 
 private
+
+  def set_q
+    @q = Post.ransack(params[:q])
+  end
 
   def post_params
     params.require(:post).permit(:category_id, :title, :body, :try, :image)
