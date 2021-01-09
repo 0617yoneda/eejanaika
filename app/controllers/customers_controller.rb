@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_correct_customer, only: [:edit, :update, :hide]
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts
@@ -19,8 +20,8 @@ class CustomersController < ApplicationController
   end
 
   def hide
-    customer = current_customer
-    customer.update(is_deleted:true)
+    @customer = current_customer
+    @customer.update(is_deleted:true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
@@ -31,4 +32,12 @@ class CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:nickname, :profile_image, :crazy, :word)
   end
+
+  def ensure_correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+       redirect_to posts_path
+    end
+  end
+
 end

@@ -1,5 +1,6 @@
 class PostCommentsController < ApplicationController
   before_action :authenticate_customer!
+
   def create
     post = Post.find(params[:post_id])
     post_comment = PostComment.new(post_comment_params)
@@ -20,4 +21,5 @@ class PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
+
 end
