@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   }
 
   root "homes#top"
-  resources :customers, only: [:show, :edit, :update]
-  get "customers/out" => "customers#out"
-  patch "customers/hide" => "customers#hide"
+  resources :customers, only: [:show, :edit, :update] do
+    get "out" => "customers#out"
+    patch "hide" => "customers#hide"
+  end
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
