@@ -14,7 +14,7 @@
     好きな言葉: <%= customer.word %>
   </div>
   <div>
-    <% if @customer.email != "guest@example.com"  %>
+    <% if customer.email != "guest@example.com"  %>
       <%= link_to "プロフィール編集", edit_customer_path(customer), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
     <% end %>
   </div>
