@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get "out" => "customers#out"
     patch "hide" => "customers#hide"
   end
+  
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
