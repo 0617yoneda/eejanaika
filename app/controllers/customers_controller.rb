@@ -36,9 +36,14 @@ class CustomersController < ApplicationController
   end
 
   def ensure_correct_customer
+
     @customer = if params[:id]
+                  puts params
+                  puts params[:id]
                   Customer.find(params[:id])
                 elsif params[:customer_id]
+                  puts params
+                  puts params[:custmer_id]
                   Customer.find(params[:customer_id])
                 end
     redirect_to posts_path unless @customer == current_customer
