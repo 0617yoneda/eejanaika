@@ -7,7 +7,7 @@
 
     <div class="offset-md-1 col-md-8">
 <!--bootstrapでカード化-->
-      <div>
+      <div id="post_<%= @post.id %>">
         <h1><%= @post.title %></h1>
         <div>
           <%= @post.category.name  %>
@@ -23,15 +23,9 @@
       <!--コメントエリア-->
         <div>
           コメント<%= @post.post_comments.count %> |
-          <% if @post.favorited_by?(current_customer) %>
-            <%= link_to post_favorites_path(@post), method: :delete do %>
-              GOOD♥<%= @post.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to post_favorites_path(@post), method: :post do %>
-              GOOD♡<%= @post.favorites.count %>
-            <% end %>
-          <% end %>
+        </div>
+        <div class="favorite-btn">
+          <%= render "favorites/favorite-btn", post: @post %>
         </div>
         <div>
           <% if @post.customer == current_customer %>

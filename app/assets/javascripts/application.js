@@ -16,3 +16,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $(document).on('turbolinks:load', function(){
+    $("#post_<%= @post.id %>").on('click', function(){
+    });
+  });
+});
+
+// #上記との異なり
+// $(document).on('turbolinks:load', function() { });
+
