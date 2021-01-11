@@ -1,11 +1,13 @@
 <h1>Myプロフィール編集</h1>
 
+<%= render "layouts/errors", obj: @customer %>
+
 <div class="container">
   <div class="row">
 
     <%= form_with model: @customer, local:true do |f| %>
       <div class="form-group">
-        <%= f.label "ニックネーム" %>
+        <%= f.label "ニックネーム ※必須項目" %>
         <%= f.text_field :nickname, class: "form-control" %>
       </div>
       <div class="form-group">
