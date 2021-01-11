@@ -17,13 +17,13 @@
 //= require turbolinks
 //= require_tree .
 
+// #投稿詳細画面のコメント、削除対象
 $(function(){
   $(document).on('turbolinks:load', function(){
-    $("#post_<%= @post.id %>").on('click', function(){
+    $("#post_<%= @post.id %>, #post_comment_comment").on('click', function(){
     });
   });
 });
 
-// #上記との異なり
-// $(document).on('turbolinks:load', function() { });
+
 
