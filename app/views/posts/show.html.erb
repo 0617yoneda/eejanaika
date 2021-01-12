@@ -32,10 +32,10 @@
             <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
           <% end %>
         </div>
-        <%= render "layouts/errors", obj: @post %>
         <!--コメントエリア-->
         <div>
           <% if current_customer.email != "guest@example.com"  %>
+            <%= "※空のコメントはできません。" %>
             <%= form_with model:[@post,@post_comment], remote: true do |f| %>
               <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
               <%= f.submit "コメント送信" %>

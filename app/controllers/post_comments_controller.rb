@@ -8,6 +8,7 @@ class PostCommentsController < ApplicationController
     @post_comment.post_id = @post.id
     @post_comment.save
     @post.create_notification_post_comment!(current_customer, @post_comment.id)
+    flash[:notice] = "投稿しました"
   end
 
   def destroy
