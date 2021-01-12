@@ -35,7 +35,9 @@ ja:
         action: "アカウント確認"
         greeting: "ようこそ、%{recipient}さん!"
         instruction: "次のリンクでメールアドレスの確認が完了します:"
+        subject: "アカウント有効化のご案内"
       reset_password_instructions:
+        subject: "パスワード再設定のご案内"
         action: "パスワード変更"
         greeting: "こんにちは、%{recipient}さん!"
         instruction: "誰かがパスワードの再設定を希望しました。次のリンクでパスワードの再設定が出来ます。"
