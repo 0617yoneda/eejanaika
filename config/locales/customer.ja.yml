@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      customer: "ユーザー"
+    attributes:           #カラム
+      customer:
+        nickname: "ユーザーネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"

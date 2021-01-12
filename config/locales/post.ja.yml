@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      post: "投稿"
+    attributes:           #カラム
+      post:
+        title: "タイトル"
+        body: "夢中になっていること"
+        try: "次回挑戦したいこと"
+        image: "イメージ画像"
