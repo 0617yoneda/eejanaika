@@ -2,7 +2,7 @@ ja:
   activerecord:
     errors:
       models:
-        user:
+        customer:
           attributes:
             email:
               taken: "は既に使用されています。"
@@ -18,14 +18,14 @@ ja:
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
     attributes:
-      user:
+      customer:
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
     models:
-      user: "ユーザ"
+      customer: "ユーザ"
   devise:
     confirmations:
       new:
