@@ -11,10 +11,30 @@ module Eejanaika
     config.load_defaults 5.2
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # 下部色付けフォーム下
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        pp html_tag.html_safe
+        html_tag.html_safe
+      else
+        class_name = instance.object.class.name.underscore
+        method_name = instance.instance_variable_get(:@method_name)
+        pp class_name
+        pp method_name
+        h = "<label class=\"formcolor\">#{html_tag}</label><br>
+          <span class=\"error_field alert-warning errormsg\">
+            #{I18n.t("activerecord.attributes.#{class_name}.#{method_name}")}
+            #{instance.error_message.first}
+          </span>
+        </div>".html_safe
+        pp h
+        h
+      # エラー上部色付けフォーム下
+        # Settings in config/environments/* take precedence over those specified here.
+        # Application configuration can go into files in config/initializers
+        # -- all .rb files in that directory are automatically loaded after loading
+        # the framework and any gems in your application.
+      end
+    end
   end
-
 end
