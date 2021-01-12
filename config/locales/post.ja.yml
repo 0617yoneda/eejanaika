@@ -1,8 +1,7 @@
 ja:
   activerecord:
     models:
-      post: "『夢中』の投稿"
-      customer: "ユーザー"
+      post: "投稿"
     attributes:           #カラム
       post:
         title: "タイトル"
