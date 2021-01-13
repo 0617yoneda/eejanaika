@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page]).reverse_order
   end
 
   def edit
@@ -14,9 +14,15 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to posts_path
+    if @customer.update(customer_params)
+      redirect_to posts_path
+      flash[:notice] = "プロフィール編集完了です！"
+    else
+      render :edit
+    end
   end
+
+
 
   def out
   end

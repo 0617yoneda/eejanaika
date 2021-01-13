@@ -1,31 +1,35 @@
 <h1>投稿新規登録</h1>
-
+ <%#= render "layouts/errors", obj: @post %>
 <div class="container">
   <div class="row">
-    <%= form_with model: @post, local:true do |f| %>
-      <div class="form-group">
-        <%= f.label "ジャンル選択" %>
-        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-      </div>
-      <div class="form-group">
-        <%= f.label "画像" %>
-        <%= f.attachment_field :image %>
-      </div>
-      <div class="form-group">
-        <%= f.label "タイトル" %>
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "コメント" %>
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "次回の挑戦" %>
-        <%= f.text_field :try, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "投稿！", class: 'btn btn-danger' %>
-      </div>
-    <% end %>
+    <div class="col-6">
+      <%= form_with model: @post, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label "ジャンル選択" %>
+          <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+        </div>
+        <div class="form-group">
+          <%= f.label "画像" %>
+          <%= f.attachment_field :image %>
+        </div>
+        <div class="form-group">
+          <%= f.label "タイトル" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "コメント" %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "次回の挑戦" %>
+          <%= f.text_field :try, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "投稿！", class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-6">
+    </div>
   </div>
 </div>

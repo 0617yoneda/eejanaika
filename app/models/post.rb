@@ -6,11 +6,14 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
   attachment :image
 
+  validates :title, :image, :body, :try, presence: true
+
+
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
 
-  # いいね通知作成
+  # いいね通知
   def create_notification_favorite(current_customer)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
     if temp.blank?
@@ -26,7 +29,7 @@ class Post < ApplicationRecord
     end
   end
 
-  # コメント通知作成
+  # コメント通知
   def create_notification_post_comment!(current_customer, post_comment_id)
     temp_ids = PostComment.select(:customer_id).where(post_id: id).where.not(customer_id: current_customer.id).distinct
     temp_ids.each do |temp_id|
