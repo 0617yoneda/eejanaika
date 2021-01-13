@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).reverse_order
     @customer = current_customer
     @categories = Category.all
   end
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   def search
     @customer = current_customer
-    @post_searches = @q.result
+    @post_searches = @q.result.page(params[:page]).reverse_order
   end
 end
 

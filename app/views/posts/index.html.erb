@@ -14,6 +14,7 @@
       </div>
       <h6>『夢中』に関する投稿が全<%= @posts.count %>件あります！</h6>
       <%= render "posts/index", posts: @posts %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>
