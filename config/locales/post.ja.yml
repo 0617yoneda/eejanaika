@@ -8,3 +8,10 @@ ja:
         body: "夢中になっていること"
         try: "次回挑戦したいこと"
         image: "イメージ画像"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

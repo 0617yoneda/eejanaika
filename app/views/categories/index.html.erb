@@ -7,6 +7,7 @@
       <h1>投稿一覧</h1>
       <h6><%= @category.name %>の投稿が全<%= @posts.count %>件あります！</h6>
       <%= render "posts/index", posts: @posts %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>
