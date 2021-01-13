@@ -16,3 +16,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener('turbolinks:load', function() {
+    $('.loading').delay(500).fadeOut(500);
+});
