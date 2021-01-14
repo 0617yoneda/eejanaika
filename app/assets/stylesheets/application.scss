@@ -17,6 +17,7 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+// ローディング画面
 .loading{
   position: fixed;
   width: 100vw;
@@ -47,3 +48,4 @@
     opacity: 1;
   };
 }
+//
