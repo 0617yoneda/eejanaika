@@ -1,3 +1,6 @@
+<div class="loading">
+  <div class="animation">他人の『夢中』をのぞき見！</div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -5,8 +8,9 @@
     </div>
     <div class="offset-md-1 col-md-8">
       <h1><%= @customer.nickname %>さんの『夢中』一覧</h1>
-      全<%= @posts.count %>件
+      全<%= @customer.posts.count %>件
       <%= render "posts/index", posts: @posts %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>
