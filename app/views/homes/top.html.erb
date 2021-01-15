@@ -1,46 +1,42 @@
-<h1>動画エリア</h1>
+<div class="container">
+  <div class="video">
+    <%= video_tag("/assets/videos/eejanaika.mp4", :autoplay => true, :loop => true, :muted => true ) %>
+  </div>
 
-  <br>
-  </br>
-  </br>
-  </br>
-  </br>
+  <h1 class="what">What about 『ええじゃないか！』 ?</h1>
+  <div class="loading">
+    <div class="animation">夢中になれる『何か』を！</div>
+  </div>
 
-
-
-<h1>What about 『ええじゃないか！』 ?</h1>
-<div class="loading">
-  <div class="animation">夢中になれる『何か』を！</div>
-</div>
-
-<h3>新着『夢中』投稿</h3>
-<div class="today_post">
-  <% @posts.each do |post| %>
-    <div>
+  <h3 class>新着『夢中』投稿</h3>
+  <div class="today_post">
+    <% @posts.each do |post| %>
       <div>
-        <%= post.category.name  %>
-      </div>
-      <div>
-        <% if customer_signed_in? %>
-          <%= link_to post_path(post) do %>
-            <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
+        <div>
+          <%= post.category.name  %>
+        </div>
+        <div>
+          <% if customer_signed_in? %>
+            <%= link_to post_path(post) do %>
+              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
+            <% end %>
+          <% else %>
+            <%= link_to new_customer_registration_path do %>
+              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to new_customer_registration_path do %>
-            <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
-          <% end %>
-        <% end %>
+        </div>
+        <div>
+          <%= post.title %><br>
+        </div>
       </div>
-      <div>
-        <%= post.title %><br>
-      </div>
-    </div>
-  <% end %>
-</div>
-<div>
-  <% if customer_signed_in? %>
-    <%= link_to ">>もっと見る！", posts_path %>
-  <% else %>
-    <%= link_to ">>もっと見る！", new_customer_registration_path %>
-  <% end %>
+    <% end %>
+  </div>
+  <div>
+    <% if customer_signed_in? %>
+      <%= link_to ">>もっと見る！", posts_path %>
+    <% else %>
+      <%= link_to ">>もっと見る！", new_customer_registration_path %>
+    <% end %>
+  </div>
 </div>
