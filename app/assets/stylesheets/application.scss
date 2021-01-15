@@ -116,6 +116,7 @@ a.btn--shadow {
   video {
     max-width: 110%;
     padding-right: 200px;
+    padding-top: 50px;
   }
 }
 
@@ -125,3 +126,22 @@ a.btn--shadow {
     text-align: center;
 }
 
+.left-to-right {
+  opacity: 0.1;
+  transform: translateX(-20px);
+  transition: all 3s;
+  background: #FFCC66;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: white;
+  height: 100px;
+}
+.left-to-right.scrollin {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.animation_text{
+  font-size: 40px;
+}
