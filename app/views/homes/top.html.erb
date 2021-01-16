@@ -1,38 +1,61 @@
+<div class="loading">
+  <div class="animation">夢中になれる『何か』を！</div>
+</div>
+
 <div class="container">
   <div class="video">
     <%= video_tag("/assets/videos/eejanaika.mp4", :autoplay => true, :loop => true, :muted => true ) %>
   </div>
 
   <h1 class="what">What about 『ええじゃないか！』 ?</h1>
-  <div class="loading">
-    <div class="animation">夢中になれる『何か』を！</div>
+
+  <div class="animation_slide">
+    <div class="left-to-right">
+      <div class="animation_text">「夢中になれる『趣味や特技』の新発見&さらに没頭できる」サービス</div>
+      <div class="animation_session"> ああああああ</div>
+    </div>
+    <div class="left-to-right">
+    　<div class="animation_text">夢中を見つけたい方</div>
+    　<div class="animation_session">本文</div>
+    </div>
+    <div class="left-to-right">
+    　<div class="animation_text">夢中を共有したい方</div>
+    　<div class="animation_session">本文</div>
+    </div>
   </div>
 
-  <h3 class>新着『夢中』投稿</h3>
+  <h3 class="what">新着『夢中』投稿</h3>
   <div class="today_post">
     <% @posts.each do |post| %>
-      <div>
-        <div>
-          <%= post.category.name  %>
-        </div>
-        <div>
-          <% if customer_signed_in? %>
-            <%= link_to post_path(post) do %>
-              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
+      <div class="card-deck mx-auto">
+        <div class="card">
+          <div>
+            <% if customer_signed_in? %>
+              <%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+              <% end %>
+            <% else %>
+              <%= link_to new_customer_registration_path do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to new_customer_registration_path do %>
-              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
-            <% end %>
-          <% end %>
-        </div>
-        <div>
-          <%= post.title %><br>
+          </div>
+          <div class="card-body card_body_area">
+            <div class="card-category">
+              <p><%= post.category.name %></p>
+            </div>
+            <div class="card-title">
+              <%= post.title.truncate(19) %>
+            </div>
+            <div>
+              <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
-  <div>
+  <div class="card_next">
     <% if customer_signed_in? %>
       <%= link_to ">>もっと見る！", posts_path %>
     <% else %>

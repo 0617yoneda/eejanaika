@@ -20,3 +20,16 @@
 document.addEventListener('turbolinks:load', function() {
     $('.loading').delay(500).fadeOut(500);
 });
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left-to-right').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 150){
+                $(this).addClass('scrollin');
+            }
+        });
+    });
+});
