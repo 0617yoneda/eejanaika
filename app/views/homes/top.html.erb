@@ -24,26 +24,33 @@
     </div>
   </div>
 
-  <h3 class>新着『夢中』投稿</h3>
+  <h3 class="what">新着『夢中』投稿</h3>
   <div class="today_post">
     <% @posts.each do |post| %>
-      <div>
-        <div>
-          <%= post.category.name  %>
-        </div>
-        <div>
-          <% if customer_signed_in? %>
-            <%= link_to post_path(post) do %>
-              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
+      <div class="card-deck mx-auto">
+        <div class="card">
+          <div>
+            <% if customer_signed_in? %>
+              <%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+              <% end %>
+            <% else %>
+              <%= link_to new_customer_registration_path do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to new_customer_registration_path do %>
-              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %>
-            <% end %>
-          <% end %>
-        </div>
-        <div>
-          <%= post.title %><br>
+          </div>
+          <div class="card-body card_body_area">
+            <div class="card-category">
+              <p><%= post.category.name %></p>
+            </div>
+            <div class="card-title">
+              <%= post.title.truncate(19) %>
+            </div>
+            <div>
+              <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
