@@ -17,15 +17,14 @@
       </li>
     </ul>
     <div>
-      <%= attachment_image_tag customer, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image.jpg", class: "profile_image_custom" %>
+      <%= attachment_image_tag customer, :profile_image, size: "60x60", format: 'jpeg', fallback: "eejanaika.jpg", class: "profile_image_custom" %>
     </div>
     <div>
       <% if customer.email != "guest@example.com"  %>
-        <%= link_to "プロフィール編集", edit_customer_path(customer), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+        <%= link_to edit_customer_path(customer), class: "btn btn--orange btn--cubic btn--shadow security_font" do %>
+          <i class="fas fa-id-card-alt"></i><%= "『設定』してええじゃないか！" %>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
-
-
-
