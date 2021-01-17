@@ -1,21 +1,24 @@
-<h2>プロフィール</h2>
+<h2 class="profile_customer">Myプロフィール</h2>
 
 <div>
+    <div>色ココに入れる</div>
   <div>
-    <%= customer.nickname %>
-  </div>
-  <div>
-    <%= attachment_image_tag customer, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image.jpg" %>
-  </div>
-  <div>
-    夢中になっている事: <%= customer.crazy %>
-  </div>
-  <div>
-    好きな言葉: <%= customer.word %>
-  </div>
-  <div>
-    <% if customer.email != "guest@example.com"  %>
-      <%= link_to "プロフィール編集", edit_customer_path(customer), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-    <% end %>
+    <div>
+      <%= attachment_image_tag customer, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image.jpg", class: "profile_image_custom" %>
+    </div>
+    <div>
+      <%= customer.nickname %>
+    </div>
+    <div>
+      夢中になっている事: <%= customer.crazy %>
+    </div>
+    <div>
+      『ええじゃないか！』を始めて良かったこと: <%= customer.word %>
+    </div>
+    <div>
+      <% if customer.email != "guest@example.com"  %>
+        <%= link_to "プロフィール編集", edit_customer_path(customer), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+      <% end %>
+    </div>
   </div>
 </div>
