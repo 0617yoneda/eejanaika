@@ -68,7 +68,7 @@
 }
 
 .li_header{
-  width: 200px;
+  width: 213px;
   height: 60px;
   margin-bottom: 50px;
   list-style-type: none;
@@ -187,4 +187,49 @@ a.btn--shadow {
 .card-title{
   font-size: 13px;
   color: #334e6f
+}
+
+.profile_introduction{
+  position: fixed;
+  top: 93px;
+  left: 7px;
+  z-index: 10;
+  width: 259px;
+  background-color: #FFFFFF;
+}
+
+.img_profile{
+  width: 258px;
+  height: 164px;
+  border-radius: 10px 10px 0 0;
+}
+
+.profile_image_custom{
+  position: absolute;
+  top: 82px;
+  right: 85px;
+  width: 99px;
+  height: 92px;
+  z-index: 5;
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.4);
+  border-radius: 100%;
+}
+
+.profole_nickname_side{
+  color: #FFF;
+  font-size: 19px;
+  position: absolute;
+  top: 85px;
+  right: 35px;
+  z-index: 5;
+}
+
+.list-group-item{
+  height: 120px;
+  text-align: center;
+  color: #334e6f;
+}
+
+.title_font{
+  font-size: 12px;
 }
