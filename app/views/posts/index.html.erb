@@ -1,28 +1,28 @@
 <div class="loading">
   <div class="animation">夢中になってもええじゃないか！</div>
 </div>
-
-<div class="profile_area">
-  <%= render "layouts/profile", customer: @customer %>
-</div>
-
-<div class="what">投稿一覧</div>
-
-<%= render "posts/search_form" %>
-  <div class="body_area">
-    <div>
-      <% @categories.each do |category| %>
-        <%= link_to category.name, category_posts_path(category), class:"btn btn-sm btn-success" %>
-      <% end %>
+<div class="row">
+  <div class="col-2">
+    <div class="profile_area">
+      <%= render "layouts/profile", customer: @customer %>
     </div>
+  </div>
+  <div class="col-10">
+    <div class="what">投稿一覧</div>
+    <%= render "posts/search_form" %>
+    <div class="body_area">
+      <div>
+        <% @categories.each do |category| %>
+          <%= link_to category.name, category_posts_path(category), class:"btn btn-sm btn-success" %>
+        <% end %>
+      </div>
 
-    <h6>『夢中』に関する投稿が全<%= @posts.count %>件あります！</h6>
+      <h6>『夢中』に関する投稿が全<%= @posts.count %>件あります！</h6>
 
-    <div class="today_post">
-      <%= render "posts/index", posts: @posts %>
+      <div class="d-flex align-content-start flex-wrap">
+        <%= render "posts/index", posts: @posts %>
+      </div>
+      <%= paginate @posts %>
     </div>
-    <%= paginate @posts %>
   </div>
 </div>
-
-
