@@ -2,7 +2,6 @@
   <div class="animation">夢中になれる『何か』を！</div>
 </div>
 
-<div class="container">
   <div class="video">
     <%= video_tag("eejanaika.mp4", :autoplay => true, :loop => true, :muted => true ) %>
   </div>
@@ -12,15 +11,15 @@
   <div class="animation_slide">
     <div class="left-to-right">
       <div class="animation_text">「夢中になれる『趣味や特技』の新発見&さらに没頭できる」サービス</div>
-      <div class="animation_session"> ああああああ</div>
+      <div> ああああああ</div>
     </div>
     <div class="left-to-right">
     　<div class="animation_text">夢中を見つけたい方</div>
-    　<div class="animation_session">本文</div>
+    　<div>本文</div>
     </div>
     <div class="left-to-right">
     　<div class="animation_text">夢中を共有したい方</div>
-    　<div class="animation_session">本文</div>
+    　<div>本文</div>
     </div>
   </div>
 
@@ -45,7 +44,7 @@
               <p><%= post.category.name %></p>
             </div>
             <div class="card-title">
-              <%= post.title.truncate(19) %>
+              <%= post.title.truncate(14) %>
             </div>
             <div>
               <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
@@ -62,4 +61,3 @@
       <%= link_to ">>もっと見る！", new_customer_registration_path %>
     <% end %>
   </div>
-</div>

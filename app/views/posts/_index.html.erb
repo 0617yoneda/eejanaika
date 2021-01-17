@@ -1,7 +1,7 @@
 <!--bootstrapでカード化-->
 <% posts.each do |post| %>
   <div class="card-deck mx-auto">
-    <div class="card">
+    <div class="card m-3">
       <div>
         <% if customer_signed_in? %>
           <%= link_to post_path(post) do %>
@@ -18,7 +18,7 @@
           <p><%= post.category.name %></p>
         </div>
         <div class="card-title">
-          <%= post.title.truncate(19) %>
+          <%= post.title.truncate(14) %>
         </div>
         <div>
           <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
