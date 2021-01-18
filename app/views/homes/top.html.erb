@@ -23,10 +23,10 @@
     </div>
   </div>
 
-  <h3 class="what">新着『夢中』投稿</h3>
+  <h1 class="what">新着『夢中』投稿</h1>
   <div class="today_post">
     <% @posts.each do |post| %>
-      <div class="card-deck mx-auto">
+      <div class="card-deck mx-auto mt-5">
         <div class="card">
           <div>
             <% if customer_signed_in? %>
@@ -54,7 +54,7 @@
       </div>
     <% end %>
   </div>
-  <div class="card_next">
+  <div class="mt-3 text-right mb-5">
     <% if customer_signed_in? %>
       <%= link_to ">>もっと見る！", posts_path %>
     <% else %>
