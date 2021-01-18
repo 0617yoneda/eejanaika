@@ -16,8 +16,10 @@
         <% end %>
       </div>
       <div class="post_index_title mt-3" >
-        <% if params[:q].present? && params[:q][:title_or_body_cont].present? %>
+        <% if params[:q][:title_or_body_cont].present? %>
           "<%= params[:q][:title_or_body_cont] %>"を含む『夢中』が<%= @post_searches.count %>件あります！
+        <% else %>
+          『夢中』が<%= @post_searches.count %>件あります！
         <% end %>
       </div>
       <span class="under_border_subtitle"></span>
