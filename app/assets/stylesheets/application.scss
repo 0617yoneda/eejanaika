@@ -366,3 +366,26 @@ a.btn--shadow {
   box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.4);
   border-radius: 100%;
 }
+
+.under_border_title_new {
+  position: absolute;
+  top: 60px;
+  width: 159px;
+  right: 362px;
+  border-bottom: 4px solid #FF9933;
+  border-radius: 10px;
+}
+
+.form_area{
+  width: 560px;
+  margin-left: 259px;
+  margin-top: 84px;
+}
+
+.form_btn{
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  color: #FFF;
+  width: 395px;
+  background-color: #FF9933;
+}
