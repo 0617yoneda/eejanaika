@@ -7,19 +7,20 @@
       <%= render "layouts/profile", customer: @customer %>
     </div>
   </div>
+
   <div class="col-10">
-    <div class="what">投稿一覧</div>
+    <div class="title_view">投稿一覧</div>
+    <span class="under_border_title"></span>
     <%= render "posts/search_form" %>
     <div class="body_area">
-      <div>
+      <div class="category_area">
         <% @categories.each do |category| %>
-          <%= link_to category.name, category_posts_path(category), class:"btn btn-sm btn-success" %>
+          <%= link_to category.name, category_posts_path(category), class:"btn btn-warning category_btn  mr-3" %>
         <% end %>
       </div>
-
-      <h6>『夢中』に関する投稿が全<%= @posts.count %>件あります！</h6>
-
-      <div class="d-flex align-content-start flex-wrap">
+      <div class="post_index_title" >『夢中』が全<%= @posts.count %>件あります！</div>
+      <span class="under_border_subtitle"></span>
+      <div class="d-flex align-content-start flex-wrap ml-4">
         <%= render "posts/index", posts: @posts %>
       </div>
       <%= paginate @posts %>

@@ -18,12 +18,11 @@ module Eejanaika
       else
         class_name = instance.object.class.name.underscore
         method_name = instance.instance_variable_get(:@method_name)
-        "<label class=\"formcolor\">#{html_tag}</label><br>
-          <span class=\"error_field alert-warning errormsg\">
+        "<label class=\"border-danger\">#{html_tag}</label><br>
+          <span class=\"error_field alert-danger errormsg\">
             #{I18n.t("activerecord.attributes.#{class_name}.#{method_name}")}
             #{instance.error_message.first}
-          </span>
-        </div>".html_safe
+          </span>".html_safe
       # エラー上部色付けフォーム下
         # Settings in config/environments/* take precedence over those specified here.
         # Application configuration can go into files in config/initializers
