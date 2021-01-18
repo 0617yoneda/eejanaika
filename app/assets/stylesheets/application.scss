@@ -306,3 +306,15 @@ a.btn--shadow {
   font-size: 29px;
   padding-top: 22px;
 }
+
+.pagination {
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+}
+
+.page-link {
+    margin-left: 15px;
+    color: #FFF;
+    background-color: #FF9933;
+}
