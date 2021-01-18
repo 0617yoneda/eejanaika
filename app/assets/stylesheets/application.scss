@@ -17,6 +17,10 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+ body {
+  background-color: #FFEFD5;
+}
+
 .loading{
   position: fixed;
   width: 100vw;
@@ -52,15 +56,16 @@
   position: fixed;
   top: 0;
   right: 5;
-  background-color: #FFFFFF;
+  background-color: #FFEFD5;
   z-index: 10;
 }
 
 .logo{
-  padding-top: 5px;
-  margin-right: 10px;
-  padding-right: 15px;
+  padding-top: 1px;
+  margin-right: -4px;
+  padding-right: 19px;
   z-index: 10;
+  width: 297px;
 }
 
 .ul_header{
@@ -106,7 +111,7 @@ a.btn--shadow {
 .video {
   width: 117.5%;
   video {
-    max-width: 110%;
+    max-width: 103%;
     padding-right: 190px;
     padding-top: 50px;
   }
@@ -281,6 +286,7 @@ a.btn--shadow {
   font-size: 38px;
   text-align: center;
   z-index: 10;
+  background-color: #FFEFD5;
 }
 
 .under_border_title{
@@ -294,8 +300,17 @@ a.btn--shadow {
 
 .under_border_subtitle{
   position: absolute;
-  top: 204px;
+  top: 227px;
   width: 233px;
+  right: 269px;
+  border-bottom: 4px solid #FF9933;
+  border-radius: 10px;
+}
+
+.under_border_subtitle_show{
+  position: absolute;
+  top: 167px;
+  width: 260px;
   right: 269px;
   border-bottom: 4px solid #FF9933;
   border-radius: 10px;
@@ -314,7 +329,41 @@ a.btn--shadow {
 }
 
 .page-link {
-    margin-left: 15px;
-    color: #FFF;
-    background-color: #FF9933;
+  margin-left: 15px;
+  color: #FFF;
+  background-color: #FF9933;
+}
+
+.show_img{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+}
+
+.show_text_area{
+  width: 100%;
+  height: 100%;
+  backgroundo-color: #FFF;
+}
+
+.profile_side_title{
+  background-color: #FFEFD5;
+}
+
+.comment_index_area{
+  width: 90%;
+  text-align: center;
+  background-color: #FF6928;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 59px;
+  border-radius: 10px;
+}
+
+.profile_image_comment{
+  width: 99px;
+  height: 92px;
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.4);
+  border-radius: 100%;
 }
