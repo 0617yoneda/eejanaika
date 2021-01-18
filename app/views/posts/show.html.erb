@@ -18,7 +18,7 @@
             <% end %>
           </div>
           <div class="post_comment_count">
-            コメント<%= @post.post_comments.count %>
+            <i class="fas fa-comment-dots"></i><%= @post.post_comments.count %>
           </div>
           <div class="favorite-btn">
             <%= render "favorites/favorite-btn", post: @post %>
