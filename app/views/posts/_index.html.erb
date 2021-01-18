@@ -1,25 +1,37 @@
 <!--bootstrapでカード化-->
 <% posts.each do |post| %>
-  <div>
-    <div>
-      <%= post.category.name  %>
-    </div>
-    <div>
-      <%= link_to post_path(post) do %>
-        <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %><br>
-      <% end %>
-    </div>
-    <div>
-      <%= post.title %><br>
-    </div>
-    <div>
-        <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
-    </div>
-    <div>
-      <%= post.customer.nickname %>
-    </div>
-    <div>
-      コメント<%= post.post_comments.count %>件 | GOOD♥<%= post.favorites.count %>件
+  <div class="card-deck mx-auto">
+    <div class="card m-3">
+      <div>
+        <% if customer_signed_in? %>
+          <%= link_to post_path(post) do %>
+            <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+          <% end %>
+        <% else %>
+          <%= link_to new_customer_registration_path do %>
+            <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-body card_body_area">
+        <div class="card-category">
+          <p><%= post.category.name %></p>
+        </div>
+        <div class="card-title">
+          <%= post.title.truncate(14) %>
+        </div>
+        <div>
+          <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
+        </div>
+        <div class="name_position">
+          by.<%= post.customer.nickname %>
+        </div>
+        <div class="mark_position">
+          <i class="far fa-kiss-wink-heart mark_favorite"><%= post.favorites.count %></i> |
+          <i class="fas fa-comment-dots mark_comment"><%= post.post_comments.count %></i>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
+
