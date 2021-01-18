@@ -1,13 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
+<div class="row">
+  <div class="col-2">
+    <div>
       <%= render "layouts/profile", customer: @customer %>
     </div>
-    <div class="offset-md-1 col-md-8">
-      <h1>投稿一覧</h1>
-      <h6><%= @category.name %>の投稿が全<%= @posts.count %>件あります！</h6>
-      <%= render "posts/index", posts: @posts %>
-      <%= paginate @posts %>
+  </div>
+  <div class="col-10">
+    <div class="title_view">ジャンル『<%= @category.name %>』一覧</div>
+    <span class="under_border_title"></span>
+    <div class="body_area">
+    <%= render "posts/search_form" %>
+      <div class="category_area">
+        <% @categories.each do |category| %>
+          <%= link_to category.name, category_posts_path(category), class:"btn btn-warning category_btn  mr-3" %>
+        <% end %>
+      </div>
+      <div class="post_index_title category_subtitle" >
+        『<%= @category.name %>』の投稿が<%= @posts.count %>件あります！
+      </div>
+      <span class="under_border_subtitle"></span>
+      <div class="d-flex align-content-start flex-wrap ml-4 mt-4">
+        <%= render "posts/index", posts: @posts %>
+      </div>
+      <div class="mt-3">
+        <%= paginate @posts %>
+      </div>
     </div>
   </div>
 </div>
