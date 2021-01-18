@@ -51,6 +51,7 @@ class PostsController < ApplicationController
   def search
     @customer = current_customer
     @post_searches = @q.result.page(params[:page]).reverse_order
+    @categories = Category.all
   end
 end
 
