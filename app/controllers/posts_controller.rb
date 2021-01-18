@@ -51,29 +51,30 @@ class PostsController < ApplicationController
   def search
     @customer = current_customer
     @post_searches = @q.result.page(params[:page]).reverse_order
+    @categories = Category.all
   end
 end
 
 private
 
-def set_q
-  @q = Post.ransack(params[:q])
-end
-
-def post_params
-  params.require(:post).permit(:category_id, :title, :body, :try, :image)
-end
-
-def ensure_correct_customer
-  @post = Post.find(params[:id])
-  unless @post.customer == current_customer
-     redirect_to posts_path
+  def set_q
+    @q = Post.ransack(params[:q])
   end
-end
 
-def ensure_correct_guest
-  @customer = current_customer
-  if @customer.email == 'guest@example.com'
-     redirect_to posts_path
+  def post_params
+    params.require(:post).permit(:category_id, :title, :body, :try, :image)
   end
-end
+
+  def ensure_correct_customer
+    @post = Post.find(params[:id])
+    unless @post.customer == current_customer
+       redirect_to posts_path
+    end
+  end
+
+  def ensure_correct_guest
+    @customer = current_customer
+    if @customer.email == 'guest@example.com'
+       redirect_to posts_path
+    end
+  end

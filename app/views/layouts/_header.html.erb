@@ -1,31 +1,29 @@
-<header>
-  <div class="sidebar">
-    <div class="logo_area">
-      <%= link_to root_path do %>
-        <%= image_tag'eejanaika.jpg', :size =>'300x310', class: "logo"  %>
+<header class="header">
+  <div>
+    <%= link_to root_path do %>
+      <%= image_tag'eejanaika_logo.png', :size =>'300x300', class: "logo" %>
+    <% end %>
+  </div>
+  <div>
+    <ul class="ul_header">
+      <% if customer_signed_in? %>
+        <li class="li_header"><%= link_to "投稿しちゃおう！", new_post_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+        <li class="li_header"><%= link_to "投稿一覧", posts_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+        <li class="li_header"><% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <%= link_to "通知一覧", notifications_path, class: "btn btn--orange btn--cubic btn--shadow" %>
+        </li>
+        <li class="li_header"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+      <% elsif admin_signed_in? %>
+        <li class="li_header"><%= link_to "投稿一覧", admins_posts_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+        <li class="li_header"><%= link_to "会員一覧", admins_customers_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+        <li class="li_header"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+      <% else %>
+        <li class="li_header"><%= link_to "新規登録(たったの30秒！)",  new_customer_registration_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+        <li class="li_header"><%= link_to "ログイン", new_customer_session_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
+        <li class="li_header"><%= link_to "ゲストユーザー", customers_guest_sign_in_path, method: :post, class: "btn btn--orange btn--cubic btn--shadow" %></li>
       <% end %>
-    </div>
-    <div>
-      <ul class="ul_header">
-        <% if customer_signed_in? %>
-          <li class="li_header mb-5"><%= link_to "投稿しちゃおう！", new_post_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-          <li class="li_header mb-5"><%= link_to "投稿一覧", posts_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-          <li class="li_header mb-5"><% if unchecked_notifications.any? %>
-                <i class="fa fa-circle" style="color: gold;"></i>
-              <% end %>
-              <%= link_to "通知一覧", notifications_path, class: "btn btn--orange btn--cubic btn--shadow" %>
-          </li>
-          <li class="li_header mb-5"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-        <% elsif admin_signed_in? %>
-          <li class="li_header mb-5"><%= link_to "投稿一覧", admins_posts_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-          <li class="li_header mb-5"><%= link_to "会員一覧", admins_customers_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-          <li class="li_header mb-5"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-        <% else %>
-          <li class="li_header mb-5"><%= link_to "新規登録(たったの30秒！)",  new_customer_registration_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-          <li class="li_header mb-5"><%= link_to "ログイン", new_customer_session_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-          <li class="li_header mb-5"><%= link_to "ゲストユーザー", customers_guest_sign_in_path, method: :post, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-        <% end %>
-      </ul>
-    </div>
+    </ul>
   </div>
 </header>

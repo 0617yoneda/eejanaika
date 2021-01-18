@@ -1,36 +1,34 @@
-<h1>検索結果　全<%= @post_searches.count %>件あります！</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
+<div class="row">
+  <div class="col-2">
+    <div>
       <%= render "layouts/profile", customer: @customer %>
     </div>
-    <div class="offset-md-1 col-md-8">
-      <!--bootstrapでカード化-->
-      <% @post_searches.each do |post| %>
-        <div>
-          <div>
-            <%= post.category.name  %>
-          </div>
-          <div>
-            <%= link_to post_path(post) do %>
-              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg' %><br>
-            <% end %>
-          </div>
-          <div>
-            <%= post.title %><br>
-          </div>
-          <div>
-          </div>
-          <div>
-            <%= post.customer.nickname %>
-          </div>
-          <div>
-            コメント<%= post.post_comments.count %> | GOOD♥<%= post.favorites.count %>
-          </div>
-        </div>
-      <% end %>
-      <%= paginate @post_searches %>
+  </div>
+
+  <div class="col-10">
+    <div class="title_view">検索結果</div>
+    <span class="under_border_title"></span>
+    <%= render "posts/search_form" %>
+    <div class="body_area">
+      <div class="category_area">
+        <% @categories.each do |category| %>
+          <%= link_to category.name, category_posts_path(category), class:"btn btn-warning category_btn  mr-3" %>
+        <% end %>
+      </div>
+      <div class="post_index_title mt-3" >
+        <% if params[:q][:title_or_body_cont].present? %>
+          "<%= params[:q][:title_or_body_cont] %>"を含む『夢中』が<%= @post_searches.count %>件あります！
+        <% else %>
+          『夢中』が<%= @post_searches.count %>件あります！
+        <% end %>
+      </div>
+      <span class="under_border_subtitle"></span>
+      <div class="d-flex align-content-start flex-wrap ml-4 mt-4">
+        <%= render "posts/index", posts: @post_searches %>
+      </div>
+      <div class="mt-3">
+        <%= paginate @post_searches %>
+      </div>
     </div>
   </div>
 </div>

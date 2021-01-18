@@ -1,50 +1,66 @@
-<div class="container">
-  <div class="row">
+<div class="row">
+  <div class="col-2">
+    <%= render "layouts/profile", customer: @customer %>
+  </div>
 
-    <div class="col-md-3">
-      <%= render "layouts/profile", customer: @customer %>
-    </div>
+  <div class="col-10">
+    <div class="title_view">投稿一覧</div>
+    <span class="under_border_title"></span>
+    <div id="post_<%= @post.id %>">
+      <div class="post_index_title"><%= @post.title %></div>
+      <span class="under_border_subtitle_show "></span>
 
-    <div class="offset-md-1 col-md-8">
-      <!--bootstrapでカード化-->
-      <div id="post_<%= @post.id %>">
-        <h1><%= @post.title %></h1>
-        <div>
-          <%= @post.category.name  %>
+      <div class="row mt-5 ml-4">
+        <div class="col-5">
+          <div>
+            <%= link_to posts_path(@post) do %>
+              <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg', class: "show_img" %><br>
+            <% end %>
+          </div>
+          <div class="post_comment_count">
+            <i class="fas fa-comment-dots"></i><%= @post.post_comments.count %>
+          </div>
+          <div class="favorite-btn">
+            <%= render "favorites/favorite-btn", post: @post %>
+          </div>
         </div>
-        <div>
-          <%= link_to posts_path(@post) do %>
-            <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg' %><br>
-          <% end %>
+        <div class="col-7 show_text_area">
+          <div class="category_btn  text-center mb-4">
+            <%= @post.category.name  %>
+          </div>
+          <div class="mb-5">
+            【  投稿者コメント  】</br>
+            <%= @post.body %>
+          </div>
+          <div class="mb-5">
+            【  次回挑戦したい事  】</br>
+            <%= @post.try %>
+          </div>
+          <div>
+            <% if @post.customer == current_customer %>
+              <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success" %>
+              <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
         </div>
-        <div>
-          <%= @post.body %>
+      </div>
+      <!--コメントエリア-->
+      <div>
+        <div class="comment_index_area mt-5">
+          <strong>コメント一覧</strong>
         </div>
-        <div class="post_comment_count">
-          コメント<%= @post.post_comments.count %>
-        </div>
-        <div class="favorite-btn">
-          <%= render "favorites/favorite-btn", post: @post %>
-        </div>
-        <div>
-          <% if @post.customer == current_customer %>
-            <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-success" %>
-            <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
-          <% end %>
-        </div>
-        <!--コメントエリア-->
-        <div>
+        <div class="text-center ml-5 mt-4">
           <% if current_customer.email != "guest@example.com"  %>
             <%= "※空のコメントはできません。" %>
             <%= form_with model:[@post,@post_comment], remote: true do |f| %>
-              <%= f.text_area :comment, rows: "2", size: "30", placeholder: "気になったことや共感したことをここに！" %>
-              <%= f.submit "コメント送信" %>
+              <%= f.text_area :comment, rows: "2", size: "60", placeholder: "気になったことや共感したことをここに！" %>
+              <%= f.submit "コメント送信", class: "btn btn-warning mb-4" %>
             <% end %>
           <% end %>
         </div>
         <div class="post_comment_body">
           <%= render "post_comments/post_comment_index", post: @post %>
-        <div>
+        </div>
       </div>
     </div>
   </div>

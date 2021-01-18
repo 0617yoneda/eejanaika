@@ -1,21 +1,30 @@
-<h2>プロフィール</h2>
+<div class="profile_introduction">
 
-<div>
-  <div>
-    <%= customer.nickname %>
-  </div>
-  <div>
-    <%= attachment_image_tag customer, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image.jpg" %>
-  </div>
-  <div>
-    夢中になっている事: <%= customer.crazy %>
-  </div>
-  <div>
-    好きな言葉: <%= customer.word %>
-  </div>
-  <div>
-    <% if customer.email != "guest@example.com"  %>
-      <%= link_to "プロフィール編集", edit_customer_path(customer), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-    <% end %>
+  <h3 class="text-center profile_side_title">Myプロフィール</h3>
+
+  <span class="profole_nickname_side text-center"><%= customer.nickname %>さん</span>
+
+  <div class="card">
+    <div class="card-img-top">
+      <%= image_tag'eejanaika_profile.png', class: "img_profile" %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><span class="title_font">【最近の夢中は？】</span></br></br>
+       <%= customer.crazy %>
+      </li>
+      <li class="list-group-item"><span class="title_font">【アプリを利用して良かった事は？】</span></br></br>
+        <%= customer.word %>
+      </li>
+    </ul>
+    <div>
+      <%= attachment_image_tag customer, :profile_image, size: "60x60", format: 'jpeg', fallback: "eejanaika.jpg", class: "profile_image_custom" %>
+    </div>
+    <div>
+      <% if customer.email != "guest@example.com"  %>
+        <%= link_to edit_customer_path(customer), class: "btn btn--orange btn--cubic btn--shadow security_font" do %>
+          <i class="fas fa-id-card-alt"></i><%= "『設定』してええじゃないか！" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
