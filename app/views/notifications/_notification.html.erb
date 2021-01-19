@@ -6,7 +6,7 @@
     <%= attachment_image_tag visitor, :profile_image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg", class: "notification_icon mr-5" %>
     <%= visitor.nickname %>さんが
   <% end %>
-
+  <% pp notification.action%>
   <% case notification.action %>
   <% when 'favorite' then %>
     <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>"にいいねしました！
@@ -15,11 +15,11 @@
     </div>
   <% when 'post_comment' then %>
     <% if notification.post.customer_id == visited.id %>
-      <%= link_to "あなたの投稿に", notification.post, style: "font-weight: bold;" %>
-      コメントしました
+      <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+      にコメントしました
     <% else %>
       <%= link_to post_path(notification.post) do %>
-        <%= notification.post.customer.name + 'さんの投稿' %>にコメントしました！
+        <%= notification.post.customer.nickname + 'さんの投稿' %>にコメントしました！
       <% end %>
     <% end %>
     <div>
