@@ -1,35 +1,34 @@
-<h1>Myプロフィール編集</h1>
+<div class="title_view mt-3 ml-5 ">Myプロフィール編集</div>
+<span class="under_border_title_new mt-3"></span>
 
 <%#= render "layouts/errors", obj: @customer %>
 
-<div class="container">
-  <div class="row">
-
-    <%= form_with model: @customer, local:true do |f| %>
-      <div class="form-group">
-        <%= f.label "ニックネーム ※必須項目" %>
-        <%= f.text_field :nickname, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "プロフィール画像" %>
-        <%= f.attachment_field :profile_image %>
-      </div>
-      <div class="form-group">
-        <%= f.label "最近、夢中になっている事！" %>
-        <%= f.text_field :crazy, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "好きな言葉！" %>
-        <%= f.text_field :word, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "変更確定！", class: 'btn btn-danger' %>
-      </div>
-    <% end %></br>
-    <div>
-      <% if @customer.email != "guest@example.com" %>
-        <%=link_to "退会する", customer_out_path(@customer.id), class:"btn btn-danger" %>
-      <% end %>
+<div class="form_area mb-5">
+  <%= form_with model: @customer, local:true do |f| %>
+    <div class="form-group mt-4">
+      <%= f.label "ニックネーム ※必須項目" %>
+      <%= f.text_field :nickname, placeholder: "公開用ネーム", class: "form-control" %>
     </div>
+    <div class="form-group mt-4">
+      <%= f.label "プロフィール画像  ※前回画像を継続する場合、アップロード不要です！" %>
+      <%= f.attachment_field :profile_image %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label "最近、夢中になっている事！" %>
+      <%= f.text_field :crazy, placeholder: "教えてください！", class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label "『ええじゃないか！』を利用して良かったこと" %>
+      <%= f.text_field :word, placeholder: "忘れないように文字として残しておきましょう！", class: "form-control" %>
+    </div>
+    <div class="form-group text-center mt-5">
+      <%= f.submit "変更確定！", class: 'btn form_btn' %>
+    </div>
+  <% end %></br>
+  <div>
+    <% if @customer.email != "guest@example.com" %>
+      <%=link_to "退会する", customer_out_path(@customer.id), class:"btn btn-danger withdrawal_btn" %>
+    <% end %>
   </div>
 </div>
+
