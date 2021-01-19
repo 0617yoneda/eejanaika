@@ -392,4 +392,58 @@ a.btn--shadow {
   top: 431px;
   z-index: 10;
   color: gold;
+  
+.under_border_title_new {
+  position: absolute;
+  top: 60px;
+  width: 159px;
+  right: 362px;
+  border-bottom: 4px solid #FF9933;
+  border-radius: 10px;
+}
+
+.form_area{
+  width: 560px;
+  margin-left: 259px;
+  margin-top: 84px;
+}
+
+.form_btn{
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  color: #FFF;
+  width: 395px;
+  background-color: #FF9933;
+}
+
+.field_error{
+  input, textarea{
+  margin-bottom: -18px;
+  }
+}
+
+.withdrawal_btn{
+  margin-left: 234px;
+}
+
+.new_title{
+  padding-left: 53px;
+}
+
+.new_area{
+  margin-top: 45px;
+  margin-left: 255px;
+}
+
+.new_under{
+  margin-right: -37px;
+}
+
+.new_sub_title{
+  margin-left: 151px;
+}
+
+.new_sub_under{
+  margin-top: -29px;
+  margin-right: 17px;
 }
