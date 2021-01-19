@@ -1,30 +1,35 @@
-<h2>ログイン</h2>
 <div class="loading">
   <div class="animation">毎度ご利用有難うございます！</div>
 </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="title_view new_title mt-4 ml-5">お帰りなさいませ！</div>
+<span class="under_border_title_new new_under mt-4 ml-5"></span>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="post_index_title new_sub_title " >ログイン ↓</div>
+<span class="under_border_subtitle new_sub_under"></span>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="form_area new_area">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%#= render "customers/shared/error_messages", resource: resource %>
+    <div class="form-group mt-4">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control"  %>
+    </div>
+    <div class="form-group text-center mt-5">
+      <%= f.submit "ログイン！", class: 'btn btn-warning form_btn'  %>
+    </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    <div class="mb-5 mt-5">
+      <%= render "customers/shared/links" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン！" %>
-  </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+</div>

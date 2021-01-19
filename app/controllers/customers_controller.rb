@@ -24,8 +24,6 @@ class CustomersController < ApplicationController
     end
   end
 
-
-
   def out
   end
 
