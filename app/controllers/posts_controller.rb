@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
     @post_comments = PostComment.all
     @customer = @post.customer
+    @categories = Category.all
   end
 
   def edit
