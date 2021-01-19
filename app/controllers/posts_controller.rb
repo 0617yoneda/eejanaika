@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: [:index, :show, :search]
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
   before_action :ensure_correct_guest, only: [:new]
 
