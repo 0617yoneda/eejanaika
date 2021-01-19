@@ -1,10 +1,10 @@
+<div class="title_view mt-5 ml-5">本当に退会しますか？</div>
+<span class="under_border_title mt-5 mr-5"></span>
 
-<div class="text-center">
-  <h4>本当に退会しますか？</h4>
-  <p>
-    退会すると、会員登録情報や<br>
-    これまでの購入履歴が閲覧できなくなります。<br>
-  </p>
-  <%= link_to "退会しない", posts_path, class:"btn btn-primary" %>
-  <%= link_to "退会する", customer_hide_path(params[:customer_id]), method: :patch, class:"btn btn-danger" %>
+<div class="text-center mt-5 out_contents">
+  <h3>退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。</h3>
+  <div class="mt-5">
+    <%= link_to "退会しない", posts_path, class:"btn btn-primary mr-5" %>
+    <%= link_to "退会する", customer_hide_path(params[:customer_id]), method: :patch, class:"btn btn-danger ml-5" %>
+  </div>
 </div>
