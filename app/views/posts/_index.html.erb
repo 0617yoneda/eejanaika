@@ -24,7 +24,9 @@
           <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
         </div>
         <div class="name_position">
-          by.<%= post.customer.nickname %>
+          <%= link_to customer_path(post.customer) do %>
+            by.<%= post.customer.nickname %>
+          <% end %>
         </div>
         <div class="mark_position">
           <i class="far fa-kiss-wink-heart mark_favorite"><%= post.favorites.count %></i> |

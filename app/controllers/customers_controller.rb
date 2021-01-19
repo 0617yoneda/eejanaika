@@ -2,10 +2,12 @@ class CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update, :hide]
   before_action :ensure_correct_guest, only: [:edit, :update, :out, :hide]
+  before_action :set_q, only: [:show]
 
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.page(params[:page]).reverse_order
+    @categories = Category.all
   end
 
   def edit
@@ -56,6 +58,10 @@ class CustomersController < ApplicationController
     if @customer.email == 'guest@example.com'
        redirect_to posts_path
     end
+  end
+
+  def set_q
+    @q = Post.ransack(params[:q])
   end
 
 end
