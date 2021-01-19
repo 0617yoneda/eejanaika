@@ -18,8 +18,8 @@ module Eejanaika
       else
         class_name = instance.object.class.name.underscore
         method_name = instance.instance_variable_get(:@method_name)
-        "<label class=\"border-danger\">#{html_tag}</label><br>
-          <span class=\"error_field alert-danger errormsg\">
+        "<span class=\"field_error\">#{html_tag}</span></br>
+          <span class=\"error_field alert-danger errormsg \">
             #{I18n.t("activerecord.attributes.#{class_name}.#{method_name}")}
             #{instance.error_message.first}
           </span>".html_safe

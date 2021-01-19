@@ -389,3 +389,9 @@ a.btn--shadow {
   width: 395px;
   background-color: #FF9933;
 }
+
+.field_error{
+  input, textarea{
+    margin-bottom: -18px;
+  }
+}
