@@ -1,20 +1,30 @@
 <% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
 <!--上部　レイアウト時検討-->
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
+<div class="row">
+  <div class="col-2">
+    <div>
       <%= render "layouts/profile", customer: @customer %>
     </div>
+  </div>
 
-    <div class="offset-md-1 col-md-8">
-      <h1 class="text-center">～通知一覧～</h1>
-      <%= link_to "通知一覧削除", notification_path(@notifications), method: :delete %>
-      <% if notifications.exists? %>
-        <%= render notifications %>
-      <% else %>
-        <p>通知はありません</p>
-      <% end %>
+  <div class="col-10">
+    <div class="title_view mt-3">～<%= @customer.nickname %>さんへの通知一覧～</div>
+    <span class="under_border_title mt-3"></span>
+    <div>
+      <div>
+        <%= link_to notification_path(@notifications), method: :delete do %>
+          <i class="fas fa-trash" style="color: black;">全削除</i>
+        <% end %>
+        <% if notifications.exists? %>
+          <%= render notifications %>
+        <% else %>
+          <div class="title_view">今のところ、通知はありません！</div>
+        <% end %>
+      </div>
+      <div class="mt-3">
+        <%= paginate @notifications %>
+      </div>
     </div>
   </div>
 </div>

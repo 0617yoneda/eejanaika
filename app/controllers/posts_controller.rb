@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: [:index, :show, :search]
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
   before_action :ensure_correct_guest, only: [:new]
 
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
     @post_comments = PostComment.all
     @customer = @post.customer
+    @categories = Category.all
   end
 
   def edit
@@ -38,8 +39,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+      flash[:notice] = "修正しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
