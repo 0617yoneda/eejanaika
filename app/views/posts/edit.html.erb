@@ -1,31 +1,30 @@
-<h1>投稿編集</h1>
+<div class="title_view mt-3 ml-5 ">新規『 夢中 』投稿！</div>
+<span class="under_border_title_new mt-3"></span>
 
-<div class="container">
-  <div class="row">
-    <%= form_with model: @post, local:true do |f| %>
-      <div class="form-group">
-        <%= f.label "ジャンル選択" %>
-        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-      </div>
-      <div class="form-group">
-        <%= f.label "画像" %>
-        <%= f.attachment_field :image %>
-      </div>
-      <div class="form-group">
-        <%= f.label "タイトル" %>
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "コメント" %>
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "次回の挑戦" %>
-        <%= f.text_field :try, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "変更確定！", class: 'btn btn-danger' %>
-      </div>
-    <% end %>
-  </div>
+<div class="form_area mb-5">
+  <%= form_with model: @post, local:true do |f| %>
+    <div class="form-group mt-4">
+      <%= f.label "ジャンル選択" %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label "画像 ※前回画像を継続する場合、アップロード不要" %>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label "タイトル　※入力必須" %>
+      <%= f.text_field :title, placeholder: "今回の『夢中』を一言で表現！", class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label "コメント　※入力必須" %>
+      <%= f.text_area :body, placeholder: "『夢中』になっている事の詳細をお願いします！", class: "form-control" %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label "次回挑戦したい詳細　※入力必須" %>
+      <%= f.text_field :try, placeholder: "行きたい場所や何をやりたいのかなど！", class: "form-control" %>
+    </div>
+    <div class="form-group text-center mt-5">
+      <%= f.submit "変更確定！", class: 'btn btn-warning form_btn' %>
+    </div>
+  <% end %>
 </div>
