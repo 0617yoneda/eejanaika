@@ -9,10 +9,11 @@
       <% if customer_signed_in? %>
         <li class="li_header"><%= link_to "投稿しちゃおう！", new_post_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
         <li class="li_header"><%= link_to "投稿一覧", posts_path, class: "btn btn--orange btn--cubic btn--shadow" %></li>
-        <li class="li_header"><% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
-            <% end %>
-            <%= link_to "通知一覧", notifications_path, class: "btn btn--orange btn--cubic btn--shadow" %>
+        <li class="li_header">
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle fa-2x n-circle"></i>
+          <% end %>
+          <%= link_to "通知一覧", notifications_path, class: "btn btn--orange btn--cubic btn--shadow" %>
         </li>
         <li class="li_header"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn--orange btn--cubic btn--shadow" %></li>
       <% elsif admin_signed_in? %>
