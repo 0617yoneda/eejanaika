@@ -7,8 +7,7 @@ class Post < ApplicationRecord
   attachment :image
 
   validates :title, :image, :body, :try, presence: true
-
-
+  
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
