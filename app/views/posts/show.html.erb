@@ -49,6 +49,11 @@
         <div class="comment_index_area mt-5">
           <strong>コメント一覧</strong>
         </div>
+        <!--バリデーションエラーメッセージ-->
+        <div id="comments_error">
+          <%= render 'layouts/errors', model: @post_comment %>
+        </div>
+
         <div class="text-center ml-5 mt-4">
           <% if current_customer.email != "guest@example.com"  %>
             <%= "※空のコメントはできません。" %>

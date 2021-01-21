@@ -2,12 +2,15 @@ ja:
   activerecord:
     models:
       post: "投稿"
+      post_comment: "投稿へのコメント"
     attributes:           #カラム
       post:
         title: "タイトル"
         body: "夢中になっていること"
         try: "次回挑戦したいこと"
         image: "イメージ画像"
+      post_comment:
+        comment: "コメント"
   views:
     pagination:
       first: "&laquo; 最初"
