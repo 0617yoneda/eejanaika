@@ -2,62 +2,68 @@
   <div class="animation">夢中になれる『何か』を！</div>
 </div>
 
-  <div class="video">
-    <%= video_tag("eejanaika.mp4", :autoplay => true, :loop => true, :muted => true ) %>
+<% if flash[:notice] %>
+  <p class="alert alert-warning text-center">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
+<div class="video">
+  <%= video_tag("eejanaika.mp4", :autoplay => true, :loop => true, :muted => true ) %>
+</div>
+
+<h1 class="what">What about 『ええじゃないか！』 ?</h1>
+
+<div class="animation_slide">
+  <div class="left-to-right">
+    <div class="animation_text">「夢中になれる『趣味や特技』の新発見&さらに没頭できる」サービス</div>
+    <div> ああああああ</div>
   </div>
-
-  <h1 class="what">What about 『ええじゃないか！』 ?</h1>
-
-  <div class="animation_slide">
-    <div class="left-to-right">
-      <div class="animation_text">「夢中になれる『趣味や特技』の新発見&さらに没頭できる」サービス</div>
-      <div> ああああああ</div>
-    </div>
-    <div class="left-to-right">
-    　<div class="animation_text">夢中を見つけたい方</div>
-    　<div>本文</div>
-    </div>
-    <div class="left-to-right">
-    　<div class="animation_text">夢中を共有したい方</div>
-    　<div>本文</div>
-    </div>
+  <div class="left-to-right">
+  　<div class="animation_text">夢中を見つけたい方</div>
+  　<div>本文</div>
   </div>
+  <div class="left-to-right">
+  　<div class="animation_text">夢中を共有したい方</div>
+  　<div>本文</div>
+  </div>
+</div>
 
-  <h1 class="what">新着『夢中』投稿</h1>
-  <div class="today_post">
-    <% @posts.each do |post| %>
-      <div class="card-deck mx-auto mt-5">
-        <div class="card">
-          <div>
-            <% if customer_signed_in? %>
-              <%= link_to post_path(post) do %>
-                <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
-              <% end %>
-            <% else %>
-              <%= link_to new_customer_registration_path do %>
-                <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
-              <% end %>
+<h1 class="what">新着『夢中』投稿</h1>
+<div class="today_post">
+  <% @posts.each do |post| %>
+    <div class="card-deck mx-auto mt-5">
+      <div class="card">
+        <div>
+          <% if customer_signed_in? %>
+            <%= link_to post_path(post) do %>
+              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
             <% end %>
+          <% else %>
+            <%= link_to new_customer_registration_path do %>
+              <%= attachment_image_tag post, :image, :fill, 200, 200, format: 'jpeg', class: "card_width" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-body card_body_area">
+          <div class="card-category">
+            <p><%= post.category.name %></p>
           </div>
-          <div class="card-body card_body_area">
-            <div class="card-category">
-              <p><%= post.category.name %></p>
-            </div>
-            <div class="card-title">
-              <%= post.title.truncate(14) %>
-            </div>
-            <div>
-              <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
-            </div>
+          <div class="card-title">
+            <%= post.title.truncate(14) %>
+          </div>
+          <div>
+            <%= attachment_image_tag post.customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "card-profile" %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
-  <div class="mt-3 text-right mb-5">
-    <% if customer_signed_in? %>
-      <%= link_to ">>もっと見る！", posts_path %>
-    <% else %>
-      <%= link_to ">>もっと見る！", new_customer_registration_path %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
+<div class="mt-3 text-right mb-5">
+  <% if customer_signed_in? %>
+    <%= link_to ">>もっと見る！", posts_path %>
+  <% else %>
+    <%= link_to ">>もっと見る！", new_customer_registration_path %>
+  <% end %>
+</div>
