@@ -1,0 +1,31 @@
+<div class="loading">
+  <div class="animation">些細なことでもご連絡ください！</div>
+</div>
+
+<div class="title_view new_title mt-4 ml-5">お問い合わせ</div>
+<span class="under_border_title_new new_under mt-4 ml-5"></span>
+
+<div class="post_index_title new_sub_title ">入力フォーム ↓</div>
+<span class="under_border_subtitle new_sub_under"></span>
+
+<div class="form_area new_area">
+  <%= form_with model: @contact, local: true do |f|%>
+    <%#= render "customers/shared/error_messages", resource: resource %>
+    <div class="form-group mt-4">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, placeholder: "※必須項目", autocomplete: "name", class: "form-control"  %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, placeholder: "※必須項目",  autocomplete: "email", class: "form-control"  %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label :message %><br />
+      <%= f.text_field :message, autofocus: true, placeholder: "※必須項目",  autocomplete: "eessage", class: "form-control"  %>
+    </div>
+
+    <div class="form-group text-center mt-5">
+      <%= f.submit "お問い合わせ内容送信", class: 'btn btn-warning form_btn'  %>
+    </div>
+  <% end %>
+</div>

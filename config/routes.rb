@@ -16,18 +16,22 @@ Rails.application.routes.draw do
   }
 
   root "homes#top"
+
   resources :customers, only: [:show, :edit, :update] do
     get "out" => "customers#out"
     patch "hide" => "customers#hide"
   end
-  
+
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
     get :search, on: :collection
   end
+
   get "categories/:id/posts" => "categories#index", as: "category_posts"
   resources :notifications, only: [:index, :destroy]
+  get  "contacts" =>"contacts#new"
+  post "contacts" => "contacts#create"
 
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#new_guest'
