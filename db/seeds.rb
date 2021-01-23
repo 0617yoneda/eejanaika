@@ -8,7 +8,8 @@
 
 Customer.create!(
   email: ENV['CUSTOMER_TEST_EMAIL'],
-  password: ENV['CUSTOMER_TEST_PASSWORD']
+  password: ENV['CUSTOMER_TEST_PASSWORD'],
+  nickname: ENV['CUSTOMER_TEST_NICKNAME']
 )
 
 Admin.create!(
