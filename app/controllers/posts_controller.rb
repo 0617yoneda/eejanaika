@@ -21,6 +21,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).reverse_order
+    @post_counts = Post.all
     @customer = current_customer
     @categories = Category.all
   end

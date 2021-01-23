@@ -19,7 +19,7 @@
           <%= link_to category.name, category_posts_path(category), class:"btn btn-warning category_btn  mr-3" %>
         <% end %>
       </div>
-      <div class="post_index_title mt-3" >『夢中』が全<%= @posts.count %>件あります！</div>
+      <div class="post_index_title mt-3" >『夢中』が全<%= @post_counts.count %>件あります！</div>
       <span class="under_border_subtitle"></span>
       <div class="d-flex align-content-start flex-wrap ml-4 mt-4">
         <%= render "posts/index", posts: @posts %>
