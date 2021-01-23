@@ -147,6 +147,7 @@ a.btn--shadow {
 
 .animation_text{
   font-size: 30px;
+  color: red;
 }
 
 .footer {
@@ -456,4 +457,31 @@ a.btn--shadow {
 .new_sub_under{
   margin-top: -29px;
   margin-right: 17px;
+}
+
+.top_under_border_title{
+  position: absolute;
+  top: 48px;
+  width: 135px;
+  right: 392px;
+  border-bottom: 4px solid #FF9933;
+  border-radius: 10px;
+}
+
+.second_under_border_title{
+  position: absolute;
+  top: 75px;
+  width: 499px;
+  right: 231px;
+  border-bottom: 4px solid #FF9933;
+  border-radius: 10px;
+}
+
+.third_under_border_title{
+  position: absolute;
+  top: 74px;
+  width: 244px;
+  right: 340px;
+  border-bottom: 4px solid #FF9933;
+  border-radius: 10px;
 }
