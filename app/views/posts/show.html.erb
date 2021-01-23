@@ -17,9 +17,10 @@
               <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg', class: "show_img" %><br>
             <% end %>
           </div>
-          <div class="post_comment_count">
-            <i class="fas fa-comment-dots"></i><%= @post.post_comments.count %>
-          </div>
+          <i class="fas fa-comment-dots"></i>
+          <span class="post_comment_count">
+            <%= @post.post_comments.count %>
+          </span>
           <div class="favorite-btn">
             <%= render "favorites/favorite-btn", post: @post %>
           </div>
